@@ -1,0 +1,7 @@
+# http://git-scm.com/docs/gitignore
+
+ # Mac
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints
