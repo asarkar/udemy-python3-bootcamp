@@ -2,7 +2,7 @@
 
 ## Useful
 
-* Activate Conda: `conda activate`
+* Activate Conda: `conda activate base`
 
 * Launch Jupyter Notebook: `jupyter notebook`
 
@@ -28,4 +28,12 @@
 
 * Section 6: Methods and Functions
 
-* Section 7: Milestone Project - 1
+* Section 7: Milestone Project - 1 (Tic-Tac-Toe)
+
+* Section 8: Object Oriented Programming
+
+* Section 9: Modules and Packages
+
+* Section 10: Errors and Exception Handling
+
+* Section 11: Milestone Project - 2 (Blackjack)
