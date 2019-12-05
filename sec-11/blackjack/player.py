@@ -26,7 +26,7 @@ class Player(AbstractPlayer):
 		super().__init__()
 		self.chips = chips
 
-	def adjust_chips(self, chips, bet):
+	def adjust_chips(self, chips, bet = False):
 		if bet:
 			if chips > self.chips:
 				raise ValueError("Insufficient funds")
@@ -36,9 +36,6 @@ class Player(AbstractPlayer):
 			print(f"Congratulations, you now have {self.chips} chips")
 
 class Dealer(AbstractPlayer):
-	def __init__(self):
-		super().__init__()
-
 	def __str__(self):
 		if len(self.hand) == 2:
 			first = self.hand[0]

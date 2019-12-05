@@ -37,3 +37,19 @@
 * Section 10: Errors and Exception Handling
 
 * Section 11: Milestone Project - 2 (Blackjack)
+
+* Section 12: Python Decorators
+
+* Section 13: Python Generators
+
+* Section 14: Final Capstone Python Project
+
+* Section 15: Advanced Python Modules
+
+* Section 16: Advanced Python Objects and Data Structures
+
+* Section 17: Bonus Material - Introduction to GUIs
+
+* Section 18: Appendix: Older Python 2 Material
+
+* Section 19: Bonus Section: Thank You!
