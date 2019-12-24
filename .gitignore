@@ -3,6 +3,9 @@
  # Mac
 .DS_Store
 
+# PyCharm
+.idea
+
 # Jupyter Notebook
 .ipynb_checkpoints
 

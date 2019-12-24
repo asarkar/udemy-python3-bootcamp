@@ -26,14 +26,14 @@
 ### Run in Docker Container
 
 ```
-$ docker run -it --name python -v /Volumes/Workspace/python3-bootcamp:/srv/python3-bootcamp -w /srv/python3-bootcamp python:3.8-slim-buster /bin/bash
+$ docker run -it --name python -v /path/to/python3-bootcamp:/srv/python3-bootcamp -w /srv/python3-bootcamp python:3.8-slim-buster /bin/bash
 $ pip install -r requirements.txt
 ```
 
 or to use Jupyter Notebooks
 
 ```
-$ docker run -it --name jupyter -v /Volumes/Workspace/python3-bootcamp:/srv/python3-bootcamp -p 8888:8888 -w /srv/python3-bootcamp jupyter/base-notebook
+$ docker run -it --name jupyter -v /path/to/python3-bootcamp:/srv/python3-bootcamp -p 8888:8888 -w /srv/python3-bootcamp jupyter/base-notebook
 ```
 
 To disable stdout/stderr output by Pytest
@@ -42,6 +42,34 @@ To disable stdout/stderr output by Pytest
 $ pytest -s
 ```
 
+### Install pyenv
+
+```
+$ xcode-select --install
+$ brew update && brew install pyenv
+$ pyenv install <version>
+$ pyenv global <version>
+```
+
+Add `eval "$(pyenv init -)"` to `~/.bash_profile`. Relaunch Terminal.
+
+Check that `pyenv` managed version is used
+
+```
+which python
+```
+
+Upgrade `pip`
+
+```
+pip install --upgrade pip
+```
+
+Install `pytest`
+
+```
+$ pip install -U pytest
+```
 
 ## Syllabus
 
