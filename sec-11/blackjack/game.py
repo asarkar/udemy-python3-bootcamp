@@ -1,5 +1,4 @@
-import player
-import deck
+from . import player, deck
 
 def main():
 	play = "y"

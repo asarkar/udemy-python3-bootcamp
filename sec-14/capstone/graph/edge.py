@@ -27,5 +27,5 @@ class Edge:
 	def __eq__(self, other: Edge) -> bool:
 		return self.__vertices() == other.__vertices()
 
-	def __lt__(self, other: Point2D) -> bool:
+	def __lt__(self, other: Edge) -> bool:
 		return self.__vertices() < other.__vertices()

@@ -14,6 +14,18 @@
 
 * Info on Certification:  https://support.udemy.com/hc/en-us/articles/229603868-Certificate-of-Completion
 
+### Modules and Packages
+
+* https://docs.python.org/3/tutorial/modules.html
+
+* https://stackoverflow.com/q/7505988/839733
+
+* https://stackoverflow.com/q/12229580/839733
+
+* https://stackoverflow.com/q/36826839/839733
+
+* https://softwareengineering.stackexchange.com/q/349993/236701
+
 ## Syllabus
 
 * Section 1: Course Overview
