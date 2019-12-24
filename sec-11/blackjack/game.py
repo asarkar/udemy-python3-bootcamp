@@ -78,5 +78,5 @@ def main():
 			print("Sorry, you have run out of funds and cannot play again")
 			play = "n"
 
-if __name__== "__main__":
-  main()
+# sec-11$ python -m blackjack.game
+main()

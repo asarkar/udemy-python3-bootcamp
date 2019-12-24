@@ -1,5 +1,3 @@
-# asarkar:sec-11$ python -m unittest discover
-
 from blackjack import deck
 import pytest
 
