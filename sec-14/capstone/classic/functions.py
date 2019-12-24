@@ -1,8 +1,7 @@
-from __future__ import annotations # for Point2D forward references
-import random
+from .point_2d import Point2D
 import math
-from functools import total_ordering
 from heapq import heappush, heappop
+from typing import List, Sequence
 
 # https://en.wikipedia.org/wiki/Collatz_conjecture
 def collatz(n):
@@ -20,29 +19,11 @@ def collatz(n):
 
 	return count
 
-@total_ordering # generate comparison methods
-class Point2D:
-	def __init__(self, x: int, y: int):
-		self.x = x
-		self.y = y
-
-	def dist(self, other: Point2D) -> float:
-		return math.sqrt((self.x - other.x) ** 2 + (self.y - other.y) ** 2)
-
-	def __eq__(self, other: Point2D) -> bool:
-		return ((self.x, self.y) == (other.x, other.y))
-
-	def __lt__(self, other: Point2D) -> bool:
-		return ((self.x, self.y) < (other.x, other.y))
-
-	def __repr__(self) -> str:
-		return f"({self.x}, {self.y})"
-
 # Algorithm Design - Kleinberg + Tardos, sec 5.4
 # https://www.youtube.com/watch?v=xi-WF07rAQw
 # https://www.youtube.com/watch?v=3pUOv_ocJyA
 # https://www.youtube.com/watch?v=7tiafUFrlBw
-def closest_pair(points: List[Point2D]) -> (Point2D, Point2D):
+def closest_pair(points: Sequence[Point2D]) -> (Point2D, Point2D):
 	inf = Point2D(math.inf, math.inf) # type(math.inf) is float but there is no integer infinity
 
 	def __closest_pair(p_x: List[Point2D], p_y: List[Point2D]) -> (Point2D, Point2D):
@@ -115,7 +96,7 @@ def sieve_of_eratosthenes(n: int) -> List[int]:
 
 	return primes
 
-def bubble_sort(l: List[int]) -> None:
+def bubble_sort(l: Sequence[int]) -> None:
 	last_unsorted = len(l) - 1
 	sorted = False
 	while last_unsorted > 0 and not sorted: # short circuit if already sorted

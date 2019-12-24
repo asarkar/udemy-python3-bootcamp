@@ -1,7 +1,8 @@
 # asarkar:sec-14$ python -m unittest discover
 
 import unittest
-import classic
+from capstone.classic.point_2d import Point2D
+import capstone.classic.functions as classic
 
 class TestClassic(unittest.TestCase):
 	def test_collatz(self):

@@ -1,4 +1,5 @@
-import undirected_graph as ug
+from .undirected_graph import UndirectedGraph
+from .edge import Edge
 from collections import deque
 import math
 import heapq
@@ -6,13 +7,13 @@ from typing import Set, Deque
 
 # https://www.youtube.com/watch?v=xR4sGgwtR2I
 # https://www.youtube.com/watch?v=8MpoO2zA2l4
-def eulerian_path(g: ug.UndirectedGraph) -> Deque[int]:
+def eulerian_path(g: UndirectedGraph) -> Deque[int]:
 	degrees = dict(map(lambda v: (v, g.degree(v)), g.vertices()))
 	odd_degrees = list(filter(lambda kv: kv[1] % 2 != 0, degrees.items()))
 
 	start = None
 	if len(odd_degrees) == 0: # Eulerian circuit
-		start = g.vertices()[0]
+		start = tuple(g.vertices())[0]
 	elif len(odd_degrees) == 2: # Eulerian path
 		start = odd_degrees[0][0]
 	else:
@@ -23,7 +24,7 @@ def eulerian_path(g: ug.UndirectedGraph) -> Deque[int]:
 
 	def __dfs(v: int, u: int = None) -> None:
 		if u is not None:
-			visited.add(ug.Edge(u, v))
+			visited.add(Edge(u, v))
 
 		for x in filter(lambda e: e not in visited, g.adj_edges(v)):
 			degrees[v] -= 1
@@ -39,11 +40,11 @@ def eulerian_path(g: ug.UndirectedGraph) -> Deque[int]:
 	return path
 
 	# run DFS and if visited == g.vertices(), graph is connected
-def is_connected(g: ug.UndirectedGraph) -> bool:
+def is_connected(g: UndirectedGraph) -> bool:
 	pass
 
 # https://www.youtube.com/watch?v=lAXZGERcDf4
-def dijkstra_sp(g: ug.UndirectedGraph, src: int, target: int) -> (Deque[int], int):
+def dijkstra_sp(g: UndirectedGraph, src: int, target: int) -> (Deque[int], int):
 	unexplored = []
 	parent = dict()
 	dist = dict()
@@ -82,7 +83,7 @@ def dijkstra_sp(g: ug.UndirectedGraph, src: int, target: int) -> (Deque[int], in
 # To implement Kruskal's algorithm, we need a Union-Find data structure. Following are couple of implementations.
 # https://www.nayuki.io/page/disjoint-set-data-structure
 # https://github.com/mrapacz/disjoint-set
-def prim_msp(g: ug.UndirectedGraph) -> (Set[ug.Edge], int):
+def prim_msp(g: UndirectedGraph) -> (Set[Edge], int):
 	unexplored = []
 	visited = set()
 	path = set()
