@@ -1,5 +1,3 @@
-from __future__ import annotations
-from enum import Enum, auto
 import abc
 import string
 from typing import ClassVar, Dict
