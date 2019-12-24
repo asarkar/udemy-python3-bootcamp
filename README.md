@@ -26,15 +26,22 @@
 ### Run in Docker Container
 
 ```
-docker run -it -v /Volumes/Workspace/python3-bootcamp:/srv/python3-bootcamp -w /srv/python3-bootcamp python:3.7-slim-buster /bin/bash
-pip install -r requirements.txt
+$ docker run -it --name python -v /Volumes/Workspace/python3-bootcamp:/srv/python3-bootcamp -w /srv/python3-bootcamp python:3.8-slim-buster /bin/bash
+$ pip install -r requirements.txt
 ```
 
 or to use Jupyter Notebooks
 
 ```
-docker run -it -v /Volumes/Workspace/python3-bootcamp:/srv/python3-bootcamp -p 8888:8888 -w /srv/python3-bootcamp jupyter/base-notebook
+$ docker run -it --name jupyter -v /Volumes/Workspace/python3-bootcamp:/srv/python3-bootcamp -p 8888:8888 -w /srv/python3-bootcamp jupyter/base-notebook
 ```
+
+To disable stdout/stderr output by Pytest
+
+```
+$ pytest -s
+```
+
 
 ## Syllabus
 

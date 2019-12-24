@@ -14,7 +14,7 @@ class TestGraph:
 		g.add_edge(Edge(1, 3))
 		g.add_edge(Edge(3, 4))
 
-		assert graph.eulerian_path(g) is None
+		assert not graph.eulerian_path(g)
 
 	def test_eulerian_path(self):
 		g = UndirectedGraph()
@@ -24,7 +24,7 @@ class TestGraph:
 		g.add_edge(Edge(1, 2))
 		g.add_edge(Edge(3, 4))
 
-		assert graph.eulerian_path(g) is not None
+		assert graph.eulerian_path(g)
 
 	def test_eulerian_circuit(self):
 		g = UndirectedGraph()
@@ -35,7 +35,7 @@ class TestGraph:
 		g.add_edge(Edge(1, 2))
 		g.add_edge(Edge(3, 4))
 
-		assert graph.eulerian_path(g) is not None
+		assert graph.eulerian_path(g)
 
 	def test_dijkstra_sp(self):
 		g = UndirectedGraph()
