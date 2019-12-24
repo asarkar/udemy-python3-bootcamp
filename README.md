@@ -3,11 +3,6 @@
 ![](https://github.com/asarkar/python3-bootcamp/workflows/Complete%20Python%20Bootcamp/badge.svg)
 
 ## Useful
-
-* Activate Conda: `conda activate base`
-
-* Launch Jupyter Notebook: `jupyter notebook`
-
 * Student Chat Channel: https://discord.gg/TztE6B8
 
 * Video Guide to the Chat Room: https://www.youtube.com/watch?v=bkH89OJ001M
@@ -27,6 +22,19 @@
 * https://stackoverflow.com/q/36826839/839733
 
 * https://softwareengineering.stackexchange.com/q/349993/236701
+
+### Run in Docker Container
+
+```
+docker run -it -v /Volumes/Workspace/python3-bootcamp:/srv/python3-bootcamp -w /srv/python3-bootcamp python:3.7-slim-buster /bin/bash
+pip install -r requirements.txt
+```
+
+or to use Jupyter Notebooks
+
+```
+docker run -it -v /Volumes/Workspace/python3-bootcamp:/srv/python3-bootcamp -p 8888:8888 -w /srv/python3-bootcamp jupyter/base-notebook
+```
 
 ## Syllabus
 
