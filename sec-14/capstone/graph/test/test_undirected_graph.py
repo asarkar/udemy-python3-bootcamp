@@ -29,3 +29,6 @@ class TestUndirectedGraph:
         assert g.degree(2) == 2
         assert g.degree(3) == 3
         assert g.degree(4) == 1
+
+        assert g.adj_edges(100) is None
+        assert g.degree(100) is None

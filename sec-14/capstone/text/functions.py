@@ -14,7 +14,7 @@ def pig_latin(s: str) -> str:
 
 def count_vowels(s: str) -> Dict[str, int]:
     # https://www.datacamp.com/community/tutorials/python-dictionary-comprehension
-    {k: v for k, v in Counter(s).items() if k in "aeiou"}
+    return {k: v for k, v in Counter[str](s).items() if k in "aeiou"}
 
 
 def is_palindrome(s: str) -> bool:

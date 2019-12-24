@@ -1,6 +1,6 @@
 from typing import Set
-
 from .edge import Edge
+from functools import wraps
 
 
 class UndirectedGraph:
@@ -19,14 +19,21 @@ class UndirectedGraph:
         self.adj[e.head].add(e)
         self.adj[e.tail].add(e)
 
+    def _has_vertex(method):
+        @wraps(method)
+        def wrap(self, *args, **kwargs):
+            if args[0] not in self.adj:
+                return None
+            return method(self, *args, **kwargs)
+
+        return wrap
+
+    @_has_vertex
     def adj_edges(self, v: int) -> Set[Edge]:
-        if v not in self.adj:
-            return None
         return self.adj[v]
 
+    @_has_vertex
     def degree(self, v: int) -> int:
-        if v not in self.adj:
-            return None
         return len(self.adj[v])
 
     def __repr__(self) -> str:
