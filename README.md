@@ -1,5 +1,7 @@
 [Complete Python Bootcamp: Go from zero to hero in Python 3](https://www.udemy.com/course/complete-python-bootcamp/)
 
+![](https://github.com/asarkar/python3-bootcamp/workflows/Complete%20Python%20Bootcamp/badge.svg)
+
 ## Useful
 
 * Activate Conda: `conda activate base`
