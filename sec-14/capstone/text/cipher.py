@@ -15,13 +15,16 @@ class Cipher(abc.ABC):
         pass
 
 
-def _rotate(n: int) -> str:
-    return string.ascii_uppercase[n:] + string.ascii_uppercase[:n]
-
-
 # https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher
 class VigenereCipher(Cipher):
-    _TABLE: Final[ClassVar[Dict[str, str]]] = dict({(chr(i + ord("A")), _rotate(i)) for i in range(26)})
+    @staticmethod
+    def _rotate(n: int) -> str:
+        return string.ascii_uppercase[n:] + string.ascii_uppercase[:n]
+
+    # https://stackoverflow.com/q/13905741/839733
+    # https://docs.python.org/3/reference/executionmodel.html#resolution-of-names
+    _TABLE: Final[ClassVar[Dict[str, str]]] =\
+        dict((lambda r=_rotate.__func__: {chr(i + ord("A")): r(i) for i in range(26)})())
 
     def __init__(self, key: str):
         assert key, "Key must be non empty"
