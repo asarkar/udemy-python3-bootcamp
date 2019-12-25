@@ -2,7 +2,7 @@ from __future__ import annotations
 import abc
 import math
 import string
-from typing import ClassVar, Dict, Final
+from typing import ClassVar, Final, Mapping, Dict
 
 
 class Cipher(abc.ABC):
@@ -23,8 +23,13 @@ class VigenereCipher(Cipher):
 
     # https://stackoverflow.com/q/13905741/839733
     # https://docs.python.org/3/reference/executionmodel.html#resolution-of-names
-    _TABLE: Final[ClassVar[Dict[str, str]]] =\
-        dict((lambda r=_rotate.__func__: {chr(i + ord("A")): r(i) for i in range(26)})())
+    # Alternative 1: (lambda r=rotate.__func__: {chr(i + ord("A")): r(i) for i in range(26)})()
+    # Alternative 2: zip(
+    #   (chr(i + ord("A")) for i in range(26)),
+    #   map(rotate.__func__, range(26)),
+    # )
+    _TABLE: Final[ClassVar[Mapping[str, str]]] = \
+        {chr(i + ord("A")): r(i) for r in (_rotate.__func__,) for i in range(26)}
 
     def __init__(self, key: str):
         assert key, "Key must be non empty"
@@ -74,7 +79,7 @@ class VernamCipher(Cipher):
         ("Z", 0b10001)
     })
 
-    _REV_TABLE: Final[ClassVar[Dict[str, str]]] = {v: k for k, v in _TABLE.items()}
+    _REV_TABLE: Final[ClassVar[Mapping[str, str]]] = {v: k for k, v in _TABLE.items()}
 
     def __init__(self, key: str):
         assert key, "Key must be non empty"
