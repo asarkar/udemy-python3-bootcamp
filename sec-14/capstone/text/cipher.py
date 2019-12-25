@@ -1,7 +1,8 @@
+from __future__ import annotations
 import abc
 import math
 import string
-from typing import ClassVar, Dict
+from typing import ClassVar, Dict, Final
 
 
 class Cipher(abc.ABC):
@@ -14,13 +15,13 @@ class Cipher(abc.ABC):
         pass
 
 
-def rotate(n: int) -> str:
+def _rotate(n: int) -> str:
     return string.ascii_uppercase[n:] + string.ascii_uppercase[:n]
 
 
 # https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher
 class VigenereCipher(Cipher):
-    _TABLE: ClassVar[Dict[str, str]] = dict({(chr(i + ord("A")), rotate(i)) for i in range(26)})
+    _TABLE: Final[ClassVar[Dict[str, str]]] = dict({(chr(i + ord("A")), _rotate(i)) for i in range(26)})
 
     def __init__(self, key: str):
         assert key, "Key must be non empty"
@@ -41,7 +42,7 @@ class VigenereCipher(Cipher):
 # https://www.cryptomuseum.com/crypto/vernam.htm
 class VernamCipher(Cipher):
     # https://www.cryptomuseum.com/crypto/baudot.htm
-    _TABLE: ClassVar[Dict[str, int]] = dict({
+    _TABLE: Final[ClassVar[Dict[str, int]]] = dict({
         ("A", 0b00011),
         ("B", 0b11001),
         ("C", 0b01110),
@@ -70,7 +71,7 @@ class VernamCipher(Cipher):
         ("Z", 0b10001)
     })
 
-    _REV_TABLE: ClassVar[Dict[str, str]] = {v: k for k, v in _TABLE.items()}
+    _REV_TABLE: Final[ClassVar[Dict[str, str]]] = {v: k for k, v in _TABLE.items()}
 
     def __init__(self, key: str):
         assert key, "Key must be non empty"
@@ -96,10 +97,11 @@ class CaesarCipher(Cipher):
     def __init__(self, shift: int):
         self.shift = shift
 
-    def _crypt(self, text: str, shift: int) -> str:
+    @staticmethod
+    def _crypt(text: str, shift: int) -> str:
         result = []
         for ch in text:
-            if (ch.isupper()):
+            if ch.isupper():
                 x = (ord(ch) - ord("A") + shift) % 26
                 result.append(string.ascii_uppercase[x])
             else:
@@ -108,7 +110,7 @@ class CaesarCipher(Cipher):
         return "".join(result)
 
     def encrypt(self, plaintext: str) -> str:
-        return self._crypt(plaintext, self.shift)
+        return CaesarCipher._crypt(plaintext, self.shift)
 
     def decrypt(self, ciphertext: str) -> str:
-        return self._crypt(ciphertext, -self.shift)
+        return CaesarCipher._crypt(ciphertext, -self.shift)
